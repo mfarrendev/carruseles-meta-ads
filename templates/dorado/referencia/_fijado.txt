@@ -1,0 +1,3 @@
+2026-08-27T19:38:27
+Referencia congelada del motor. Si `dorado.py verificar` da FAIL y el cambio ERA
+a propósito, se vuelve a correr `fijar` y el diff del git muestra qué se movió.

@@ -1,0 +1,224 @@
+/* Fuentes LOCALES, no CDN (estilo-y-recursos.md §5 · 31-jul-2026).
+   Con @import de Google Fonts no existe ningún archivo en disco que el motor pueda MEDIR, así
+   que caía a un proxy Arial — y Arial sobreestima el ancho de Oswald en ~20% (1023px vs 852px
+   medido en «Entrenar acompañada» @92px). El motor achicaba títulos que sí entraban, o dejaba
+   pasar líneas que no. Con el .woff2 local, montwidth mide la fuente real al peso real. */
+@font-face{font-family:'Oswald';src:url('assets/Oswald.woff2') format('woff2');
+           font-weight:200 700;font-display:block}
+@font-face{font-family:'Inter';src:url('assets/Inter.woff2') format('woff2');
+           font-weight:100 900;font-display:block}
+@font-face{font-family:'Montserrat';src:url('assets/Montserrat.woff2') format('woff2');
+           font-weight:100 900;font-display:block}
+/* Tipografías de Marca Verde. Un @font-face cuyo archivo no existe es silencioso, así que
+   declararlas acá no le hace nada a los otros clientes; el que las USA es su preset. */
+@font-face{font-family:'Archivo';src:url('assets/archivo.woff2') format('woff2');
+           font-weight:100 900;font-display:block}
+@font-face{font-family:'PressStart';src:url('assets/pressstart.woff2') format('woff2');
+           font-weight:400;font-display:block}
+/* ===== Motor universal de carruseles · arquetipos l-* + escalas t-* =====
+   Brand-switchable vía vars. Default = preset navy (Marca Bronce).
+   --scrim: triplete RGB del color de scrim/fondo (para rgba()).            */
+*{margin:0;padding:0;box-sizing:border-box}
+/* Lienzo default 1:1 (1080×1080) — regla de la casa, reconfirmada por el director creativo el
+   3-ago-2026 (se revierte el default 4:5 de la oleada 2.5A). engine.py declara el lienzo
+   inline en cada HTML que emite, así que un spec con "canvas":"4:5" renderiza 1080×1350
+   sin tocar este archivo. */
+html,body{width:1080px;height:1080px}
+body{--scrim:19,26,46; --accent:#C79A6E; --accent-solid:#B68A5E; --block:#D2AC7C;
+     --ink:#ffffff; --font-display:'Oswald'; --font-ui:'Inter'}
+body[data-brand="navy"]{--scrim:19,26,46;--accent:#C79A6E;--accent-solid:#B68A5E;--block:#D2AC7C;--ink:#fff;--font-display:'Oswald';--font-ui:'Inter'}
+/* preset DORADO — Marca Deportiva · negro #0A0A0B + dorado #E8B23A · cinemática deportiva */
+body[data-brand="dorado"]{--scrim:10,10,11;--accent:#E8B23A;--accent-solid:#E8B23A;--block:#E8B23A;--ink:#ffffff;--font-display:'Oswald';--font-ui:'Inter'}
+/* ===== preset VERDE — verde wasabi profundo + lima · Archivo 900 títulos, Press Start 2P
+   kicker/CTA (fuente pixel SIN glifos acentuados: sus mayúsculas van sin tilde a propósito).
+   ⚠️ POR QUÉ ESTÁ ACÁ Y NO EN LA CARPETA DEL CARRUSEL (5-ago-2026): el motor SINCRONIZA este
+   archivo sobre `<carpeta>/styles.css` en cada corrida (engine.py §sincroniza). Marca Verde tenía
+   su preset escrito a mano en la carpeta; al re-correr el motor por el arreglo del halo, la
+   plantilla lo pisó y c1/c2 salieron con el bronce de Marca Bronce y las fuentes del sistema
+   — con TODAS las compuertas en verde, porque bronce sobre verde también cumple contraste.
+   Un preset de marca vive en la plantilla o no vive. Relato: APRENDIZAJES.md §20.        */
+body[data-brand="verde"]{--scrim:7,28,18;--accent:#aef23a;--accent-solid:#c6f53a;
+     --block:#c6f53a;--ink:#ffffff;--font-display:'Archivo';--font-ui:'Archivo';
+     --font-kicker:'PressStart';--bg-slide:#06170f}
+body[data-brand="verde"] .title{font-weight:900;letter-spacing:-.02em;
+     text-shadow:3px 3px 5px rgba(4,18,10,.62)}
+body[data-brand="verde"] .title:has(em){font-weight:700}
+body[data-brand="verde"] .title em{font-weight:900}
+body[data-brand="verde"] .body{font-weight:500;color:rgba(255,255,255,.94);
+     text-shadow:2px 2px 4px rgba(4,18,10,.55)}
+body[data-brand="verde"] .eyebrow{display:inline-block;font-weight:400;font-size:27px;
+     line-height:1.5;letter-spacing:.02em;color:#c6f53a;background:#0a2417;
+     padding:12px 18px;margin-bottom:26px}
+body[data-brand="verde"] .cta{font-weight:400;font-size:32px;letter-spacing:.02em;
+     color:#0a2417;padding:20px 28px;margin-top:26px;border-radius:6px}
+/* ===== preset VERDE-LIGHT — la estética "documento" que pidió el director creativo el 10-ago-2026:
+   fondo blanco cálido, mockups de documento flotando y titular NEGRO enorme. Es la misma
+   marca que `verde` pero invertida en luminosidad, así que va como preset aparte y no
+   como variante: el scrim, la tinta y el logo cambian los tres a la vez.
+   El logo que corresponde acá es `logo-marca.png` (letras oscuras), NO el blanco.        */
+body[data-brand="verde-claro"]{--scrim:246,245,240;--accent:#4E8A12;--accent-solid:#5FA318;
+     --block:#5FA318;--ink:#101010;--font-display:'Archivo';--font-ui:'Archivo';
+     --font-kicker:'Archivo';--bg-slide:#F7F6F1}
+body[data-brand="verde-claro"] .title{font-weight:900;letter-spacing:-.03em;color:#101010;
+     text-shadow:none}
+body[data-brand="verde-claro"] .title:has(em){font-weight:700}
+body[data-brand="verde-claro"] .title em{font-weight:900;color:#101010}
+body[data-brand="verde-claro"] .body{font-weight:500;color:rgba(16,16,16,.72);
+     text-shadow:none}
+body[data-brand="verde-claro"] .eyebrow{display:inline-block;font-weight:700;font-size:27px;
+     line-height:1.5;letter-spacing:.10em;text-transform:uppercase;color:#3D6E0E;
+     background:#E4EFCF;padding:11px 17px;margin-bottom:24px;border-radius:4px}
+body[data-brand="verde-claro"] .cta{font-weight:700;font-size:31px;letter-spacing:.02em;
+     color:#ffffff;background:#3D6E0E;padding:20px 28px;margin-top:26px;border-radius:6px}
+
+
+/* ===== presets CREMA — lote ciclorama (27-ago-2026, pedido de Max).
+   Paleta oficial de Marca Crema: crema #f7f6f2, beige #a0887c, berenjena #924b79,
+   dark calido #131110, tinta #1e1e1e. Tipografia Montserrat (sustituto aprobado de Gotham).
+   Van DOS presets porque el ciclorama cambia de luminosidad por pieza y con el la tinta:
+   `crema` para cicloramas oscuros (berenjena, dark) y `-light` para los claros
+   (crema, arena, beige). Mismo criterio que verde / verde-claro.
+   El color exacto del ciclorama lo trae la FOTO generada, no este archivo.
+   El CTA es a proposito el elemento que ROMPE la estetica Apple: pastilla fluor
+   #D7F205 inclinada -2deg. Decision de Max el 27-ago-2026 ("rompiendo la estetica,
+   llamativo"). El precio y el CTA NUNCA se ocluyen con el recorte de la persona.  */
+body[data-brand="crema"]{--scrim:19,17,16;--accent:#e6d0c4;--accent-solid:#e6d0c4;
+     --block:#924b79;--ink:#ffffff;--font-display:'Montserrat';--font-ui:'Montserrat';
+     --font-kicker:'Montserrat';--bg-slide:#131110}
+body[data-brand="crema"] .title{font-weight:400;letter-spacing:-.02em;text-shadow:none}
+body[data-brand="crema"] .body{font-weight:400;color:rgba(255,255,255,.86);text-shadow:none}
+
+body[data-brand="crema-claro"]{--scrim:247,246,242;--accent:#924b79;--accent-solid:#924b79;
+     --block:#a0887c;--ink:#1e1e1e;--font-display:'Montserrat';--font-ui:'Montserrat';
+     --font-kicker:'Montserrat';--bg-slide:#f7f6f2}
+body[data-brand="crema-claro"] .title{font-weight:400;letter-spacing:-.02em;color:#1e1e1e;
+     text-shadow:none}
+body[data-brand="crema-claro"] .body{font-weight:400;color:rgba(30,30,30,.74);
+     text-shadow:none}
+
+/* El destaque del titular carga el peso, no solo el color: la linea de contexto va en
+   regular y la clave en ExtraBold. Es el patron por defecto de los titulares Montserrat
+   segun el canon de la marca, y es lo que separa un titular de un bloque de texto grande. */
+body[data-brand="crema"] .title em,
+body[data-brand="crema-claro"] .title em{font-weight:800;letter-spacing:-.035em}
+
+/* La pastilla del CTA. Correccion de Max (28-ago-2026): el fluor #D7F205 no es de la
+   marca — se invento imitando el verde lima de la referencia de Nike, y eso es COPIAR
+   la estetica en vez de imitarla. Va el gradiente oficial beige->berenjena
+   (#a0887c -> #924b79, el mismo del wordmark) y el RADIO DE MARCA de 28px que declara
+   `Contexto definitivo/README.md`. Sigue siendo el elemento que rompe la calma del
+   ciclorama —gradiente saturado, sombra, peso 800— pero con la paleta de la casa.       */
+/* CTA v3 — correccion de Max (28-ago-2026): «ese recuadro negro no es llamativo y se ve
+   feo», «podria ser de ese color medio rosado que usa la marca pero mas llamativo».
+   El negro entro para resolver contraste sobre el ciclorama arena, que ya no existe en el
+   lote. Vuelve el color de marca, en su version saturada, con tratamiento premium:
+   berenjena #924b79 sobre fondo claro y rosa #d9a8c4 (el del wordmark) sobre fondo oscuro,
+   anillo interior del tono complementario, radio de marca 28px y sombra de color.        */
+/* CTA v4 — correccion de Max (28-ago-2026): «no se ve bien el recuadro», la pastilla se
+   pidio MUCHO mas discreta. Se va la sombra (`0 14px 38px` leia como sticker de plantilla),
+   el radio baja de 28px a 8px, el relleno se desatura (#924b79 -> #7d5468: misma familia,
+   ~40% menos de croma) y el texto pasa a UNA sola linea. Cuatro lineas de largo desparejo
+   dentro de una caja redondeada con sombra era el elemento que mas gritaba "plantilla".
+   El contraste del texto queda en 6.3:1 (claro) y 9.3:1 (oscuro), sobre el 4.5:1 de qa_lint. */
+body[data-brand="crema"] .cta,
+body[data-brand="crema-claro"] .cta{display:inline-block;font-family:'Montserrat';
+     font-weight:600;font-size:31px;letter-spacing:.005em;line-height:1.34;
+     padding:18px 28px 19px;margin-top:26px;border-radius:8px;white-space:nowrap;
+     max-width:none;box-shadow:none}
+/* El precio es lo unico que la clienta tiene que leer de lejos: dentro del recuadro va
+   mas grande y mas pesado que el resto de la frase. Se marca con <em> en el spec.     */
+body[data-brand="crema"] .cta em,
+body[data-brand="crema-claro"] .cta em{font-style:normal;font-weight:800;
+     font-size:1.2em;letter-spacing:-.015em}
+body[data-brand="crema-claro"] .cta{color:#ffffff;background:#7d5468}
+/* Sobre ciclorama oscuro el rosa medio quedaba a 3.6:1 contra el fondo (el recuadro es
+   una mancha grande: la compuerta mide su relleno, no la letra de adentro). Se aclara al
+   rosa palido de marca, con la letra en berenjena: mas contraste y mas llamativo.       */
+body[data-brand="crema"] .cta{color:#5e2145;background:#ecdfe6}
+
+/* La palabra OFERTA, como kicker del bloque: chica, espaciada, en el tono de marca. */
+/* inline-block: la caja del kicker tiene que ABRAZAR la palabra. Como bloque medía los
+   549px de la columna y se cruzaba con la caja del logo centrado — el texto no se tocaba,
+   pero qa_dom compara rectángulos, no tinta, y reprobaba con razón. */
+body[data-brand="crema"] .eyebrow,
+body[data-brand="crema-claro"] .eyebrow{display:inline-block;font-family:'Montserrat';
+     font-weight:700;font-size:29px;letter-spacing:.18em;text-transform:uppercase;
+     margin-bottom:20px}
+body[data-brand="crema-claro"] .eyebrow{color:#924b79}
+body[data-brand="crema"] .eyebrow{color:#f4dcea}
+
+/* Para otro cliente: duplicar uno de los bloques de arriba con su paleta/tipografía.
+   NUNCA escribir el preset en el styles.css de la carpeta: el motor lo sobreescribe. */
+
+.slide{position:relative;width:1080px;height:1080px;overflow:hidden;font-family:var(--font-ui),sans-serif;background:var(--bg-slide,rgb(var(--scrim)))}
+.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* scrims direccionales */
+.sc-bottom{position:absolute;left:0;right:0;bottom:0;height:66%;background:linear-gradient(to top,rgba(var(--scrim),.94),rgba(var(--scrim),.78) 26%,rgba(var(--scrim),.40) 58%,rgba(var(--scrim),0))}
+.sc-top{position:absolute;left:0;right:0;top:0;height:44%;background:linear-gradient(to bottom,rgba(var(--scrim),.93),rgba(var(--scrim),.62) 42%,rgba(var(--scrim),0))}
+.sc-left{position:absolute;top:0;bottom:0;left:0;width:72%;background:linear-gradient(to right,rgba(var(--scrim),.92),rgba(var(--scrim),.70) 38%,rgba(var(--scrim),0))}
+.sc-right{position:absolute;top:0;bottom:0;right:0;width:72%;background:linear-gradient(to left,rgba(var(--scrim),.92),rgba(var(--scrim),.68) 38%,rgba(var(--scrim),0))}
+.sc-cap{position:absolute;left:0;right:0;top:0;height:15%;background:linear-gradient(to bottom,rgba(var(--scrim),.6),rgba(var(--scrim),0));z-index:2}
+.tint{position:absolute;inset:0;background:rgba(var(--scrim),.18)}
+/* HALO detrás del sujeto (z-index 1: ENCIMA de la foto, DEBAJO del gradiente direccional).
+   Devuelve el "verde más claro" de marca que el lote del 5-ago perdió (medido: 4.9 niveles
+   de glow en el crudo → 1.5 en el compuesto).
+
+   VA DEBAJO DEL GRADIENTE A PROPÓSITO, y esto es lo que lo hace seguro: el gradiente
+   direccional se desvanece a 0 justo en la banda donde vive el sujeto, así que ahí el halo
+   pasa entero; y sobre la columna de texto el gradiente llega a .96, así que ahí el halo
+   queda tapado y NO puede subir el fondo bajo las letras. El contraste WCAG se preserva por
+   construcción, no por medición. (Primero se puso encima del gradiente y c1 s-05 se fue a
+   3.7:1 — la compuerta E1/E2 lo cazó al toque.)
+   Lo pinta el motor SOLO sobre fondo plano (mascota sobre color de marca) — engine.halo_del_sujeto.
+   ⚠️ El radio se controla con las PARADAS, no con `circle <n>%`: un círculo de tamaño
+   explícito solo acepta una LONGITUD, y `circle 58%` invalida la declaración entera —
+   el div queda en el HTML pintando nada (pasó, 5-ago-2026). */
+.halo{position:absolute;inset:0;z-index:1;pointer-events:none;
+      background:radial-gradient(circle at var(--halo-x,50%) var(--halo-y,50%),
+                 rgba(var(--halo-c),.82) 0,   rgba(var(--halo-c),.62) var(--halo-r1,180px),
+                 rgba(var(--halo-c),.30) var(--halo-r2,430px),
+                 rgba(var(--halo-c),0)   var(--halo-r3,820px))}
+/* constante de cohesión: SOLO el logo. Sin paginador (regla universal 29-jul-2026). */
+.logo{position:absolute;top:50px;left:50%;transform:translateX(-50%);width:172px;opacity:.97;filter:drop-shadow(0 2px 16px rgba(var(--scrim),.7));z-index:5}
+.swipe{position:absolute;right:60px;bottom:60px;font-family:var(--font-display),sans-serif;font-weight:600;font-size:30px;color:var(--accent);z-index:5}
+/* texto */
+.text{position:absolute;z-index:4}
+/* --font-kicker: la fuente del kicker y la pastilla, con el display como respaldo. Existe
+   para que una marca con fuente pixel (Marca Verde) no obligue a reescribir estas reglas. */
+.eyebrow{font-family:var(--font-kicker,var(--font-display)),sans-serif;font-weight:600;font-size:27px;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.title{font-family:var(--font-display),sans-serif;font-weight:700;line-height:1.04;letter-spacing:-.01em;color:var(--ink);margin-bottom:24px}
+.title em{color:var(--accent);font-style:normal;font-weight:900}
+/* Destaque inline (director creativo, 5-ago-2026): se resalta SOLO el fragmento que importa — la
+   oferta, la cifra, el beneficio — no el titular entero. Como el titular ya va en el peso
+   máximo (Archivo 900), "más negrita" no existe: el contraste se crea BAJANDO el resto.
+   `:has(em)` hace que esto aplique únicamente a los titulares que traen destaque, así que
+   los que no lo usan quedan exactamente como estaban. El motor mide a 900, y el texto sin
+   destaque renderiza a 700 → sale MÁS ANGOSTO que lo medido: nunca desborda. */
+.title:has(em){font-weight:700}
+.body{font-family:var(--font-ui),sans-serif;font-weight:400;font-size:36px;line-height:1.4;color:rgba(255,255,255,.92)}
+.sub{font-family:var(--font-display),sans-serif;font-weight:600;font-size:34px;letter-spacing:1px;color:var(--accent);margin-top:6px}
+/* escalas de título (contraste) */
+.t-xl{font-size:104px}.t-l{font-size:84px}.t-m{font-size:62px}.t-s{font-size:50px}
+/* ===== ARQUETIPOS ===== */
+.l-leftmid .text{left:64px;top:50%;transform:translateY(-50%);width:64%;text-align:left}
+.l-topleft .text{left:64px;top:150px;width:70%;text-align:left}
+.l-botright .text{right:64px;bottom:84px;width:70%;text-align:right}
+.l-botright .eyebrow{margin-left:auto}
+.l-leftcol .text{left:64px;top:50%;transform:translateY(-50%);width:54%;text-align:left}
+.l-block .block{position:absolute;left:0;right:0;bottom:0;height:38%;background:var(--block);z-index:3}
+.l-block .text{left:64px;right:64px;bottom:64px;text-align:left}
+.l-block .eyebrow{color:rgb(var(--scrim));opacity:.85}
+.l-block .title{color:rgb(var(--scrim))}
+.l-block .title em{color:#fff}
+.l-block .body{color:rgba(var(--scrim),.88)}
+/* G: listón/banda inferior — para slides informativos con MÁS texto explicativo */
+.l-band .band{position:absolute;left:0;right:0;bottom:0;height:44%;background:linear-gradient(to top,rgba(var(--scrim),.97),rgba(var(--scrim),.93) 76%,rgba(var(--scrim),0));z-index:3}
+.l-band .text{left:64px;right:64px;bottom:54px;text-align:left;z-index:4}
+.l-band .body{max-width:100%;font-size:30px;line-height:1.4}
+.l-botbig .text{left:64px;right:64px;bottom:78px;text-align:left}
+.cta{display:inline-block;margin-top:24px;padding:16px 30px;background:var(--accent-solid);color:rgb(var(--scrim));font-family:var(--font-kicker,var(--font-display)),sans-serif;font-weight:600;font-size:30px;letter-spacing:1px;border-radius:48px}
+/* === GRADIENTE DIRECCIONAL CONTENIDO (anti-tapado) === elegir dirección según el hueco; se desvanece antes del sujeto */
+.g-left{position:absolute;inset:0;z-index:2;background:linear-gradient(to right,rgba(var(--scrim),.96),rgba(var(--scrim),.9) 22%,rgba(var(--scrim),.5) 40%,rgba(var(--scrim),0) 55%)}
+.g-right{position:absolute;inset:0;z-index:2;background:linear-gradient(to left,rgba(var(--scrim),.96),rgba(var(--scrim),.9) 22%,rgba(var(--scrim),.5) 40%,rgba(var(--scrim),0) 55%)}
+.g-bottom{position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(var(--scrim),.96),rgba(var(--scrim),.85) 18%,rgba(var(--scrim),.4) 34%,rgba(var(--scrim),0) 50%)}
+.g-top{position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,rgba(var(--scrim),.96),rgba(var(--scrim),.85) 18%,rgba(var(--scrim),.4) 34%,rgba(var(--scrim),0) 50%)}

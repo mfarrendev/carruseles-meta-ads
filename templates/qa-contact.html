@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
+/* CONTACT SHEET + SQUINT TEST (Capa 2 del QA).
+   Editar la lista de <img src> con los PNG de las slides. Render a ~1100x420
+   con Chrome headless (scale 2) y hacer UN solo Read del PNG resultante. */
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1100px;background:#21262e;font-family:-apple-system,sans-serif;padding:16px}
+.row{display:flex;gap:8px;margin-bottom:6px}
+.cell{width:170px}.cell img{width:170px;height:170px;object-fit:cover;display:block;border-radius:3px}
+.lab{font-size:10px;color:#cbd2dc;text-align:center;padding:3px 0 7px}
+.squint img{filter:grayscale(1) blur(2.2px) contrast(1.05)}
+.hd{color:#8b95a3;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin:2px 2px 8px}
+</style></head><body>
+<div class="hd">Color · detalle</div>
+<div class="row">
+  <div class="cell"><img src="01.png"><div class="lab">01</div></div>
+  <div class="cell"><img src="02.png"><div class="lab">02</div></div>
+  <div class="cell"><img src="03.png"><div class="lab">03</div></div>
+  <div class="cell"><img src="04.png"><div class="lab">04</div></div>
+  <div class="cell"><img src="05.png"><div class="lab">05</div></div>
+  <div class="cell"><img src="06.png"><div class="lab">06</div></div>
+</div>
+<div class="hd">Squint test · jerarquía (gris + blur)</div>
+<div class="row squint">
+  <div class="cell"><img src="01.png"></div><div class="cell"><img src="02.png"></div>
+  <div class="cell"><img src="03.png"></div><div class="cell"><img src="04.png"></div>
+  <div class="cell"><img src="05.png"></div><div class="cell"><img src="06.png"></div>
+</div>
+</body></html>

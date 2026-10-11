@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview carrusel</title>
+<!-- Preview para mostrar al usuario. Editar título, las <img src> y los figcaption. -->
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0f1320;color:#e8ecf3;font-family:-apple-system,sans-serif;padding:40px 20px 80px}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:22px;font-weight:600}.sub{color:#8b95a3;font-size:14px;margin:6px 0 30px}.sub b{color:#C79A6E}
+  .hd{color:#6f7a89;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin:38px 4px 14px}
+  .carousel{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 18px}
+  .card{flex:0 0 auto;width:440px;scroll-snap-align:center}
+  .card img{width:440px;height:440px;border-radius:12px;display:block;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .card .cap{font-size:12px;color:#8b95a3;text-align:center;padding-top:9px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .grid figure{background:#161b29;border-radius:12px;overflow:hidden;border:1px solid #222a3b}
+  .grid img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover}
+  .grid figcaption{padding:10px 12px;font-size:12px;color:#aab3c0}.grid figcaption b{color:#e8ecf3}
+</style></head><body><div class="wrap">
+  <h1>Cliente — Título del carrusel</h1>
+  <div class="sub">Subtítulo · 6 slides · <b>4:5 1080×1350</b></div>
+  <div class="hd">Vista carrusel (desliza →)</div>
+  <div class="carousel">
+    <div class="card"><img src="01.png"><div class="cap">01</div></div>
+    <div class="card"><img src="02.png"><div class="cap">02</div></div>
+    <div class="card"><img src="03.png"><div class="cap">03</div></div>
+    <div class="card"><img src="04.png"><div class="cap">04</div></div>
+    <div class="card"><img src="05.png"><div class="cap">05</div></div>
+    <div class="card"><img src="06.png"><div class="cap">06</div></div>
+  </div>
+  <div class="hd">Las 6 slides</div>
+  <div class="grid">
+    <figure><img src="01.png"><figcaption><b>01</b></figcaption></figure>
+    <figure><img src="02.png"><figcaption><b>02</b></figcaption></figure>
+    <figure><img src="03.png"><figcaption><b>03</b></figcaption></figure>
+    <figure><img src="04.png"><figcaption><b>04</b></figcaption></figure>
+    <figure><img src="05.png"><figcaption><b>05</b></figcaption></figure>
+    <figure><img src="06.png"><figcaption><b>06</b></figcaption></figure>
+  </div>
+</div></body></html>

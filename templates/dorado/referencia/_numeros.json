@@ -1,0 +1,22 @@
+{
+  "slides": [
+    {
+      "alfa_velo": 0.14,
+      "lineas": 3,
+      "zona_final": "top",
+      "zona_plan": "top"
+    },
+    {
+      "alfa_velo": 0.14,
+      "lineas": 7,
+      "zona_final": "l",
+      "zona_plan": "l"
+    },
+    {
+      "alfa_velo": 0.14,
+      "lineas": 2,
+      "zona_final": "bot",
+      "zona_plan": "bot"
+    }
+  ]
+}

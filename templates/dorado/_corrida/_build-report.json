@@ -1,0 +1,103 @@
+{
+  "motor": "engine.py",
+  "slides": [
+    {
+      "slide": 1,
+      "zona_plan": "top",
+      "ok": true,
+      "canvas": "1080x1080",
+      "zona_final": "top",
+      "motivo": "REENCUADRADA (x=0.00) · planificada",
+      "lineas": 3,
+      "alfa_velo": 0.14,
+      "alfa_por_linea": [
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14
+      ],
+      "ocluido": true,
+      "intentos": [
+        "top:FAIL(tapa cabeza/eje central 33%)",
+        "l:FAIL(tapa cabeza/eje central 4%)",
+        "r:FAIL(tapa cabeza/eje central 79%; tapa extremidad 9% (>tolerancia 6%); sobre el FOCO de luz 52% (max 40% para text))",
+        "bot:FAIL(tapa cabeza/eje central 36%)",
+        "cc:FAIL(tapa cabeza/eje central 37%; tapa extremidad 6% (>tolerancia 6%))",
+        "reencuadre x=0.00 → top (3L)"
+      ],
+      "fuente_real": true
+    },
+    {
+      "slide": 2,
+      "zona_plan": "l",
+      "ok": true,
+      "canvas": "1080x1080",
+      "zona_final": "l",
+      "motivo": "planificada · reencuadre no mejoró",
+      "lineas": 7,
+      "alfa_velo": 0.14,
+      "alfa_por_linea": [
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14
+      ],
+      "ocluido": true,
+      "intentos": [
+        "l@100%/92px:PASS",
+        "l daba 7 líneas → probando reencuadre"
+      ],
+      "fuente_real": true
+    },
+    {
+      "slide": 3,
+      "zona_plan": "bot",
+      "ok": true,
+      "canvas": "1080x1080",
+      "zona_final": "bot",
+      "motivo": "planificada",
+      "lineas": 2,
+      "alfa_velo": 0.14,
+      "alfa_por_linea": [
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14,
+        0.14
+      ],
+      "ocluido": true,
+      "intentos": [
+        "bot@100%/92px:PASS"
+      ],
+      "fuente_real": true
+    }
+  ]
+}

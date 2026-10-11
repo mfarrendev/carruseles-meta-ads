@@ -1,0 +1,62 @@
+{
+  "cliente": "_dorado",
+  "linea": "Caso dorado del motor",
+  "objetivo": "regresion",
+  "formato": "anuncio",
+  "framework": "PAS",
+  "segmento": "test",
+  "angulo": "caso congelado para detectar que el motor cambió sin que nadie lo pidiera",
+  "cta": "Probar el motor",
+  "brand": "verde",
+  "canvas": "1:1",
+  "presupuesto_imagenes": 0,
+  "tipografia": {
+    "font": "assets/Montserrat.woff2",
+    "weight": 800,
+    "size": 92
+  },
+  "hook_variantes": [
+    "Caso dorado"
+  ],
+  "primary_text": "Caso dorado del motor.",
+  "slides": [
+    {
+      "n": 1,
+      "titulo": "Ahorra <em>tiempo y dinero</em> con el motor.",
+      "eyebrow": "CASO DORADO",
+      "cta": "PROBAR EL MOTOR",
+      "zone": "top",
+      "v": "mid",
+      "hero": true,
+      "zoom": 1.5,
+      "posx": 1.0,
+      "posy": 1.0,
+      "size": 120,
+      "visual_need": "sujeto abajo a la derecha, hueco arriba",
+      "foto": "raw/s-01.png",
+      "fuente": "sintetica"
+    },
+    {
+      "n": 2,
+      "titulo": "Una línea larga que obliga al motor a repartir en varios renglones.",
+      "sub": "Y una bajada que ocupa su parte de la caja.",
+      "eyebrow": "DOS",
+      "zone": "l",
+      "v": "mid",
+      "visual_need": "sujeto a la derecha, columna izquierda libre",
+      "foto": "raw/s-02.png",
+      "fuente": "sintetica"
+    },
+    {
+      "n": 3,
+      "titulo": "Cierre que <em>nombra la marca</em>.",
+      "eyebrow": "TRES",
+      "cta": "PROBAR EL MOTOR",
+      "zone": "bot",
+      "v": "low",
+      "visual_need": "sujeto arriba, franja inferior libre",
+      "foto": "raw/s-03.png",
+      "fuente": "sintetica"
+    }
+  ]
+}
